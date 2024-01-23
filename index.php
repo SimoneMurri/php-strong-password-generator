@@ -13,26 +13,16 @@
             <input type="number" name="passwordLength" id="passwordLength" required min="1">
             <button class="position" type="submit">Invia</button>
         </form>
-    <?php
-        if (isset($_GET['passwordLength'])) {
-            $passwordLength = $_GET['passwordLength'];
-            $generatedPassword = generatePassword($passwordLength);
+        <?php
+            include('functions.php');
 
-            echo "<p>La tua password generata è: <strong>$generatedPassword</strong></p>";
-        }
+            if (isset($_GET['passwordLength'])) {
+                $passwordLength = $_GET['passwordLength'];
+                $generatedPassword = generatePassword($passwordLength);
 
-            
-        function generatePassword($length) {
-            $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=';
-            $password = '';
-
-            for ($i = 0; $i < $length; $i++) {
-                $password .= $characters[rand(0, strlen($characters) - 1)];
+                echo "<p>La tua password generata è: <strong>$generatedPassword</strong></p>";
             }
-
-            return $password;
-        }
-    ?>
+        ?>
     </div>
 </body>
 </html>
